@@ -1,0 +1,96 @@
+/* =========================
+   HERO CAROUSEL (BOOTSTRAP)
+   ========================= */
+
+/* Base hero wrapper */
+.hero { 
+  position: relative; 
+}
+
+/* Slides: full-viewport background panels */
+.hero .carousel-item {
+  position: relative;
+
+  /* full height incl. mobile browsers */
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000; /* fallback */
+
+  display: flex;               /* centers content vertically */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text contrast overlay */
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.35) 40%,
+    rgba(0, 0, 0, 0.6)
+  );
+  pointer-events: none;
+}
+
+/* Content block above overlay */
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 0;
+}
+
+/* Indicators on dark images */
+.hero .carousel-indicators [data-bs-target] {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Floating Pause/Play control (optional) */
+.hero .hero-controls {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .carousel-item { transition: none; }
+}
+
+/* Responsive tweak: shorter hero on very small screens */
+@media (max-width: 576px) {
+  .hero .carousel-item {
+    min-height: 75vh;
+    min-height: 75svh;
+    min-height: 75dvh;
+  }
+}
+
+/* =========================
+   SLIDE BACKGROUND IMAGES
+   (all images in /public_html/assets)
+   ========================= */
+.hero .carousel-item.hero-slide-1  { background-image: url("assets/ai-generated-8783105_1280.jpg") !important; }
+.hero .carousel-item.hero-slide-2  { background-image: url("assets/ai-generated-9000691_640.png") !important; }
+.hero .carousel-item.hero-slide-3  { background-image: url("assets/cyber-security-1805632_1280.webp") !important; }
+.hero .carousel-item.hero-slide-4  { background-image: url("assets/cyber-security-3400555_1280.webp") !important; }
+.hero .carousel-item.hero-slide-5  { background-image: url("assets/hacker-1944688_1280.webp") !important; }
+.hero .carousel-item.hero-slide-6  { background-image: url("assets/cyber-8431995_1280.png") !important; }
+.hero .carousel-item.hero-slide-7  { background-image: url("assets/security-4868162_1280.webp") !important; }
+.hero .carousel-item.hero-slide-8  { background-image: url("assets/istockphoto-1177652986-612x612.jpg") !important; }
+.hero .carousel-item.hero-slide-9  { background-image: url("assets/istockphoto-947372712-612x612.jpg") !important; }
+.hero .carousel-item.hero-slide-10 { background-image: url("assets/istockphoto-1453886503-612x612.jpg") !important; }
+.hero .carousel-item.hero-slide-11 { background-image: url("assets/istockphoto-2024864030-612x612.jpg") !important; }
+.hero .carousel-item.hero-slide-12 { background-image: url("assets/istockphoto-2212504511-612x612.jpg") !important; }
+.hero .carousel-item.hero-slide-13 { background-image: url("assets/istockphoto-953608350-612x612.jpg") !important; }
+.hero .carousel-item.hero-slide-14 { background-image: url("assets/istockphoto-970063848-612x612.jpg") !important; }
+
+/* keep hero buttons natural width on small screens */
+.hero .btn { width: auto; }
