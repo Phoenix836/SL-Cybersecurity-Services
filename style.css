@@ -11,30 +11,34 @@
 .hero .carousel-item {
   position: relative;
 
-  /* full height incl. mobile browsers */
-  min-height: 100vh;
-  min-height: 100svh;
+  /* Prefer modern dynamic viewport; fall back gracefully */
   min-height: 100dvh;
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #000; /* fallback */
+  background-color: #000; /* fallback for slow / missing images */
 
   display: flex;               /* centers content vertically */
   align-items: center;
   justify-content: center;
 }
 
-/* Text contrast overlay */
+/* Fallback if dynamic viewport isn't supported */
+@supports not (height: 1dvh) {
+  .hero .carousel-item {
+    min-height: 100vh;
+  }
+}
+
+/* Text contrast overlay (slightly stronger for readability) */
 .hero .overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.35) 40%,
-    rgba(0, 0, 0, 0.6)
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.45) 40%,
+    rgba(0, 0, 0, 0.70)
   );
   pointer-events: none;
 }
@@ -67,8 +71,6 @@
 /* Responsive tweak: shorter hero on very small screens */
 @media (max-width: 576px) {
   .hero .carousel-item {
-    min-height: 75vh;
-    min-height: 75svh;
     min-height: 75dvh;
   }
 }
@@ -77,20 +79,20 @@
    SLIDE BACKGROUND IMAGES
    (all images in /public_html/assets)
    ========================= */
-.hero .carousel-item.hero-slide-1  { background-image: url("assets/ai-generated-8783105_1280.jpg") !important; }
-.hero .carousel-item.hero-slide-2  { background-image: url("assets/ai-generated-9000691_640.png") !important; }
-.hero .carousel-item.hero-slide-3  { background-image: url("assets/cyber-security-1805632_1280.webp") !important; }
-.hero .carousel-item.hero-slide-4  { background-image: url("assets/cyber-security-3400555_1280.webp") !important; }
-.hero .carousel-item.hero-slide-5  { background-image: url("assets/hacker-1944688_1280.webp") !important; }
-.hero .carousel-item.hero-slide-6  { background-image: url("assets/cyber-8431995_1280.png") !important; }
-.hero .carousel-item.hero-slide-7  { background-image: url("assets/security-4868162_1280.webp") !important; }
-.hero .carousel-item.hero-slide-8  { background-image: url("assets/istockphoto-1177652986-612x612.jpg") !important; }
-.hero .carousel-item.hero-slide-9  { background-image: url("assets/istockphoto-947372712-612x612.jpg") !important; }
-.hero .carousel-item.hero-slide-10 { background-image: url("assets/istockphoto-1453886503-612x612.jpg") !important; }
-.hero .carousel-item.hero-slide-11 { background-image: url("assets/istockphoto-2024864030-612x612.jpg") !important; }
-.hero .carousel-item.hero-slide-12 { background-image: url("assets/istockphoto-2212504511-612x612.jpg") !important; }
-.hero .carousel-item.hero-slide-13 { background-image: url("assets/istockphoto-953608350-612x612.jpg") !important; }
-.hero .carousel-item.hero-slide-14 { background-image: url("assets/istockphoto-970063848-612x612.jpg") !important; }
+.hero .carousel-item.hero-slide-1  { background-image: url("assets/ai-generated-8783105_1280.jpg?v=27") !important; }
+.hero .carousel-item.hero-slide-2  { background-image: url("assets/ai-generated-9000691_640.png?v=27") !important; }
+.hero .carousel-item.hero-slide-3  { background-image: url("assets/cyber-security-1805632_1280.webp?v=27") !important; }
+.hero .carousel-item.hero-slide-4  { background-image: url("assets/cyber-security-3400555_1280.webp?v=27") !important; }
+.hero .carousel-item.hero-slide-5  { background-image: url("assets/hacker-1944688_1280.webp?v=27") !important; }
+.hero .carousel-item.hero-slide-6  { background-image: url("assets/cyber-8431995_1280.png?v=27") !important; }
+.hero .carousel-item.hero-slide-7  { background-image: url("assets/security-4868162_1280.webp?v=27") !important; }
+.hero .carousel-item.hero-slide-8  { background-image: url("assets/istockphoto-1177652986-612x612.jpg?v=27") !important; }
+.hero .carousel-item.hero-slide-9  { background-image: url("assets/istockphoto-947372712-612x612.jpg?v=27") !important; }
+.hero .carousel-item.hero-slide-10 { background-image: url("assets/istockphoto-1453886503-612x612.jpg?v=27") !important; }
+.hero .carousel-item.hero-slide-11 { background-image: url("assets/istockphoto-2024864030-612x612.jpg?v=27") !important; }
+.hero .carousel-item.hero-slide-12 { background-image: url("assets/istockphoto-2212504511-612x612.jpg?v=27") !important; }
+.hero .carousel-item.hero-slide-13 { background-image: url("assets/istockphoto-953608350-612x612.jpg?v=27") !important; }
+.hero .carousel-item.hero-slide-14 { background-image: url("assets/istockphoto-970063848-612x612.jpg?v=27") !important; }
 
 /* keep hero buttons natural width on small screens */
 .hero .btn { width: auto; }
