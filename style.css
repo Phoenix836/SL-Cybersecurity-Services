@@ -2,29 +2,50 @@
    HERO CAROUSEL (BOOTSTRAP)
    ========================= */
 
+/* Page reset & background */
+html, body {
+  height: 100%;
+  margin: 0;              /* remove default body margin */
+  background: #000;       /* if anything peeks through, it's dark */
+}
+
 /* Base hero wrapper */
-.hero { 
-  position: relative; 
+.hero {
+  position: relative;
+  min-height: 100dvh;     /* dynamic viewport for modern mobile */
+  overflow: hidden;       /* hides tiny overflow from indicators/buttons */
+}
+
+/* Make the inner carousel fill the hero */
+.hero > .carousel,
+.hero .carousel-inner {
+  height: 100%;
 }
 
 /* Slides: full-viewport background panels */
 .hero .carousel-item {
   position: relative;
-
-  /* Prefer modern dynamic viewport; fall back gracefully */
   min-height: 100dvh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #000; /* fallback for slow / missing images */
-
-  display: flex;               /* centers content vertically */
+  background-color: #000; /* fallback for slow/missing images */
+  display: flex;          /* centers content vertically */
   align-items: center;
   justify-content: center;
 }
 
+/* Prefer small-viewport units when supported (stable with URL bar visible) */
+@supports (height: 1svh) {
+  .hero,
+  .hero .carousel-item {
+    min-height: 100svh;
+  }
+}
+
 /* Fallback if dynamic viewport isn't supported */
 @supports not (height: 1dvh) {
+  .hero,
   .hero .carousel-item {
     min-height: 100vh;
   }
@@ -50,7 +71,10 @@
   padding: 3rem 0;
 }
 
-/* Indicators on dark images */
+/* Indicators on dark images + nudge up a bit from bottom */
+.hero .carousel-indicators {
+  bottom: 0.75rem;
+}
 .hero .carousel-indicators [data-bs-target] {
   background-color: rgba(255, 255, 255, 0.85);
 }
@@ -63,17 +87,12 @@
   z-index: 2;
 }
 
-/* Accessibility: respect reduced motion */
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .carousel-fade .carousel-item { transition: none; }
 }
 
-/* Responsive tweak: shorter hero on very small screens */
-@media (max-width: 576px) {
-  .hero .carousel-item {
-    min-height: 75dvh;
-  }
-}
+/* NOTE: Removed the old rule that set 75dvh on small screens to avoid white gaps */
 
 /* =========================
    SLIDE BACKGROUND IMAGES
@@ -94,5 +113,5 @@
 .hero .carousel-item.hero-slide-13 { background-image: url("assets/istockphoto-953608350-612x612.jpg?v=27") !important; }
 .hero .carousel-item.hero-slide-14 { background-image: url("assets/istockphoto-970063848-612x612.jpg?v=27") !important; }
 
-/* keep hero buttons natural width on small screens */
+/* Keep hero buttons natural width on small screens */
 .hero .btn { width: auto; }
