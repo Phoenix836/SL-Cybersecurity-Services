@@ -1,6 +1,7 @@
 /* ==============================
    SL CyberSecurity Services – Site JS
    - Lazy-load hero slide backgrounds
+   - Fix mobile viewport height (no white gap)
    - (Optional) Footer year
 ============================== */
 
@@ -10,6 +11,22 @@ function setFooterYear() {
   if (y) y.textContent = new Date().getFullYear();
 }
 
+/* ----- Fix viewport height on mobile (prevents white gap) ----- */
+function setVh() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+/* Run early and keep it updated */
+document.addEventListener('DOMContentLoaded', setVh, { passive: true });
+window.addEventListener('load', setVh, { passive: true });
+window.addEventListener('resize', setVh, { passive: true });
+window.addEventListener('orientationchange', setVh, { passive: true });
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', setVh, { passive: true });
+}
+
+/* ----- Lazy-load hero slide backgrounds ----- */
 document.addEventListener("DOMContentLoaded", () => {
   setFooterYear(); // safe if #year doesn't exist
 
@@ -40,4 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyBg(following);
   });
 });
+
+
 
