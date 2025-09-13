@@ -1,7 +1,13 @@
 /* =========================
    HERO CAROUSEL (BOOTSTRAP)
    ========================= */
+   /* Fix mobile viewport height issues with JS-driven variable */
+:root { --vh: 1vh; }
 
+.hero,
+.hero .carousel-item {
+  min-height: calc(var(--vh) * 100); /* full viewport height */
+}
 /* Page reset & background */
 html, body {
   height: 100%;
@@ -115,3 +121,4 @@ html, body {
 
 /* Keep hero buttons natural width on small screens */
 .hero .btn { width: auto; }
+
